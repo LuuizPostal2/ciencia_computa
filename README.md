@@ -1,1 +1,1 @@
-# ciencia_computa
+# ciencia_compu
