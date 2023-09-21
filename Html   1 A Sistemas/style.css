@@ -1,11 +1,24 @@
+body{
+
+
+}
+
 header{
+
 
 background-color: blue; /*cor do fundo*/
 font-size:  20px;          /*coloca tamanho da fonte*/
 color:aliceblue;         /*coloca cor da fonte*/
 width: 100%;               /*coloca largura da janela*/
-height: 40px;             /*coloca altura do espaço do cabeçalho*/
+height: 80px;             /*coloca altura do espaço do cabeçalho*/
 
 }
-  
 
+
+.imagem{
+        /*tamanho que a imagem terá na tela*/
+    width: 300px;
+    height: 300px;
+    padding: 10px 10px;
+    
+}
