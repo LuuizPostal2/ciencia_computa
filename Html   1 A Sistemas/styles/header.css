@@ -1,1 +1,56 @@
-
+.cabeçalho{
+    background-color: black;
+    display: flex;
+    font-size: 2em;
+    color: aliceblue;
+    width: 95%;
+    height: 80px;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1cqi;
+   }
+   
+   .logoripo{
+     width: 60px;
+     padding: 5px;
+     margin: 05px;
+   }
+   
+   .botao_login{
+    background-color: #effcf1;
+    border-radius: 10px;
+    border: none;
+    color:#b85c5c ;
+    padding: 10px 20px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 10px 29px;
+    transition-duration:0.4s;
+    cursor: pointer;
+    background-image: linear-gradient(to bottom,#adca5d);
+   }
+   
+   .botao_login:hover{
+    background-color: white;
+    color: black;
+    box-shadow: 0px 8px 16px 0px rgba(209, 192, 192, 0.2);
+   }
+   @media screen and (min-width: 1024px) {}
+   
+   
+       .cabeçalho{
+       font-size: size 2em;
+       height:160px ;
+       align-items:center ;
+       margin:1cqi ;
+      
+   }
+    .titulo_smart{
+   
+   
+    }
+   
+   
