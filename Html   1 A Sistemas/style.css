@@ -1,24 +1,10 @@
-body{
+@import url(styles/header.css);
+@import url(styles/resset.css);
+@import url(styles/footer.css);
+@import url(styles/principal.css);
 
 
-}
+ body{
+      background-color: rgb(197, 161, 161);
 
-header{
-
-
-background-color: blue; /*cor do fundo*/
-font-size:  20px;          /*coloca tamanho da fonte*/
-color:aliceblue;         /*coloca cor da fonte*/
-width: 100%;               /*coloca largura da janela*/
-height: 80px;             /*coloca altura do espaço do cabeçalho*/
-
-}
-
-
-.imagem{
-        /*tamanho que a imagem terá na tela*/
-    width: 300px;
-    height: 300px;
-    padding: 10px 10px;
-    
-}
+ }
