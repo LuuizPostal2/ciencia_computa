@@ -1,0 +1,16 @@
+
+
+
+.tema_escuro{
+        background-color:gray;
+        font-family: 'Tahoma';
+        color: white;
+}
+
+.tema_claro{
+    background-color:rgb(240, 236, 236);
+    font-family: 'Tahoma';
+    color: rgb(14, 14, 14);
+
+
+}

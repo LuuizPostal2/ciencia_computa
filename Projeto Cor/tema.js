@@ -1,3 +1,11 @@
-document.getElementById("myButton").onclick=function() {
-    document.body.style.backgroundColor="cyan";
- }
+
+
+
+var botao = document.querySelector('#Tema');
+
+
+botao.onclick = function() {
+    document.body.classList.toggle('tema_claro');
+    document.body.classList.toggle('tema_escuro');
+}
+
