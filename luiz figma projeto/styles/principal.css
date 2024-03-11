@@ -13,3 +13,9 @@
     font-size: 43px;
     text-align: center;
 }
+
+
+.imagem_central {
+    margin: 0 auto;
+    display: block;
+}
