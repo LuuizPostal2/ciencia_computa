@@ -1,0 +1,47 @@
+.serviços {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    border: 2px solid rgb(26, 26, 26);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 20px;
+    transition: border color 0.3s;
+
+}
+
+.serviços:hover {
+    border-color: rgb(131, 132, 184);
+
+}
+
+.serviços {
+    text-decoration: none;
+    color: rgb(156, 168, 221);
+    padding: 10px;
+}
+
+.serviços a:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.titulo header {
+     font-weight: bold;
+}
+
+.our_services {
+    background-color: rgb(55, 49, 93);
+    color: rgb(98, 70, 165);
+    font-size: 20px;
+    border: 2px solid transparent;
+    padding: 15px;
+    text-align: left;
+    border-radius: 10px;
+    transition: border-color 0.3s;
+    text-decoration: none;
+    margin: 40px;
+    width: auto;
+    float: left;
+}
