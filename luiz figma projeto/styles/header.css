@@ -8,6 +8,7 @@
     overflow: hidden;
     margin: 0 20px;
     transition: border-color 0.3s;
+ }
 
     .cabecalho:hover {
         border-color: rgb(131, 132, 184);
