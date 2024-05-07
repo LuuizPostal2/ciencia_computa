@@ -30,3 +30,38 @@ body {
    align-items: center;
    font-size: 24px;
 }
+
+.circle-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.circle {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #5AFF75;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.circle img {
+  width: 100%;
+  height: auto;
+}
+
+.text-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background: #B8FFA7;
+}
+
+.name,.price {
+  margin: 0;
+  padding: 0;
+}
