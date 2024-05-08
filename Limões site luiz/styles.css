@@ -38,7 +38,7 @@ body {
 }
 
 .circle {
-  position: absolute;
+  position: center;
   width: 180px;
   height: 180px;
   border-radius: 50%;
