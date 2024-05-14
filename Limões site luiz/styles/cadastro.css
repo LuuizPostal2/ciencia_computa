@@ -1,0 +1,13 @@
+body {
+    background-color: #B8FFA7;
+    font-family: "roboto Condensed", sans-serif;
+}
+
+input {
+    width: 350px;
+    height: 30px;
+    margin-left: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    background-color: aquamarine;
+}
