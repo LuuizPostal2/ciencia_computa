@@ -11,4 +11,35 @@ input {
     border-radius: 10px;
     background-color: #28FF64;
     text-align: left;
-}                                                  
+    border: none;
+    font-family: "Roboto Condensed" , sans-serif;
+}  
+
+.login {
+    margin-bottom: 250px;
+    margin-left: 130px;
+    color:#B8FFA7;
+    font-size: 35px;
+    font-family: "Permanent Marker" , sans-serif;
+}
+
+.login-final {
+    width: 200px;
+    height: 50px;
+    margin-top: 300px;
+    margin-left: 100px;
+    color: #28FF64;
+    font-size: 35px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #B8FFA7;
+    font-family: "Permanent Marker" , sans-serif;
+}
+
+.voltar {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    cursor: pointer;
+}
