@@ -121,3 +121,12 @@ body {
   width: 100%;
   height: auto;
 }
+
+.personal {
+    margin-top: 120px;
+    display: grid;
+    border-top: 2px solid rgb(17, 17, 17);
+    border-bottom: 2px solid rgb(17, 17, 17);
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+}
