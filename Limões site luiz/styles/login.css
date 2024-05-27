@@ -43,3 +43,10 @@ input {
     margin-top: 100px;
     cursor: pointer;
 }
+.login-button {
+    background-color: #4B935F;
+}
+
+.cadastro-button {
+    background-color: #5AFF75;
+}
