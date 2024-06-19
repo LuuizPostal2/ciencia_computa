@@ -3,12 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carinnho</title>
-    <link rel="Stylesheet" href="carrinho.css">
+    <title>Carrinho</title>
+    <link rel="Stylesheet" href="styles/carrinho.css">
 </head>
 <body>
+    
     <div class="variedades">
         <div class="conteudo">
+        <div class="imagem">
+        <img src="imagens/Taithi.png" class="limão" id="produto1" alt="Limão Taithi">
+        </div>
+        <div class="descricao">
+        <span class="descricao">Limão Taithi, Um dos melhores</span>
+        </div>
+        <br>
+        <br>
+        </div>
+        <div class="info-produto">
+        <label for="quantidade_produto1">Quantidade:</label>
+        <input type="number" class="quantidade" value="1" id="quantidade_produto1" readonly>
+        <label for="preco_produto1">Preço:</label>
+        <input type="number" class="preco" value="2,50" readonly id="preco_produto1">
+        <button onclick="adicionarOpcao('produto1', 'Limão Taithi')" class="botao">Adicionar ao Carrinho</button>
+        </div>
+        </div>
+        <div class="variedades">
+            <div class="conteudo">
             <div class="imagem">
-      
-  
+            <img src="imagens/Cravo.png" class="limão" id="produto2" alt="Limão Taithi">
+            </div>
+            <div class="descricao">
+            <span class="descricao">Limão Cravo, Bem gostoso!</span>
+            </div>
+            <br>
+            <br>
+            </div>
+            <div class="info-produto">
+            <label for="quantidade_produto1">Quantidade:</label>
+            <input type="number" class="quantidade" value="1" id="quantidade_produto1" readonly>
+            <label for="preco_produto2">Preço:</label>
+            <input type="number" class="preco" value="3,90" readonly id="preco_produto1">
+            <button onclick="adicionarOpcao('produto1', 'Limão Cravo')" class="botao">Adicionar ao Carrinho</button>
+            </div>
+            </div>
+        
+<table>
+<thead>
+<tr>
+<th>Produto</th>
+<th>Quantidade</th>
+<th>Preço Total</th>
+</tr>
+</thead>
+<tbody id="corpoTabela">
+</tbody>
+</table>
+
+<a href="pagamento.html">
+<div class="botao_ir">Comprar</div> 
+</a>
+<script src="Scripts/main.js"></script>
+<br>
+</body>
+</html>

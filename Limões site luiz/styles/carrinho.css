@@ -1,9 +1,72 @@
 body {
     background-color: #B8FFA7;
-    color:rgb(255, 255, 255);
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
+    font-family: "roboto Condensed", sans-serif;
 }
+.produtos {
+    display: block;
+    font-size: 20px;
+    text-align: left;
+    }
+    
+    .variedades {
+    height: auto; 
+    position: relative; 
+    background-color: #99FF48;
+    font-size: 20px;
+    color: azure;
+    margin-top: 05px;
+    margin-bottom: 10px;
+    padding: 20px;
+    }
+    
+    .botao_ir {
+    
+    background: linear-gradient(to bottom,white ,#57D95C);
+    width: 60%; 
+    margin: 20px auto; 
+    font-size: 3vmax; 
+    border: 2px solid green;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+    border-radius: 10px; 
+    padding: 5px; 
+    text-decoration: none; 
+    text-align: center; 
+    cursor: pointer; 
+    color: rgb(3, 37, 37); 
+    }
+    .limão {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    float: left; 
+    margin-right:05px; 
+    
+    }
+    
+    input[type="number"] {
+    width: 30px;
+    margin-right: 20px;
+    text-align: center;
+    font-family: Arial;
+    font-size: 15px;
+    }
+    .descricao {
+    overflow: hidden; 
+    }
+    
+    .conteudo {
+    flex: 1; 
+    }
+    
+    .info-produto {
+    text-align: left;
+    margin-left: 02px; 
+    }
+    caption {
+    margin-bottom: 10px; 
+    }
+
+    .form-container {
+    display: none;
+    margin-top: 0px;
+    }
