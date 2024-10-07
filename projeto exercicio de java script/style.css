@@ -32,6 +32,19 @@ body {
     text-align: center;
 }
 
+.botao-comprar {
+  background-color: #db1111;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.botao-comprar:hover {
+  background-color: #954141;
+}
+
 button {
    padding: 10px 20px;
    font-size: 16px;
