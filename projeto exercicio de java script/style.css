@@ -19,7 +19,7 @@ body {
     border-radius: 15px;
     height: auto; 
     position: relative; 
-    background-color: #65aae2;
+    background-color: hsla(207, 50%, 42%, 0.722);
     font-size: 20px;
     color: azure;
     margin-top: 05px;
@@ -35,7 +35,39 @@ body {
     border-radius: 15px;
     height: auto; 
     position: relative; 
-    background-color: #78e0ca;
+    background-color: #15ab8bbf;
+    font-size: 20px;
+    color: azure;
+    margin-top: 05px;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.livro3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 10px;
+    border-radius: 15px;
+    height: auto; 
+    position: relative; 
+    background-color: #0fe3564c;
+    font-size: 20px;
+    color: azure;
+    margin-top: 05px;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.livro4 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 10px;
+    border-radius: 15px;
+    height: auto; 
+    position: relative; 
+    background-color: #d1ea12a4;
     font-size: 20px;
     color: azure;
     margin-top: 05px;
