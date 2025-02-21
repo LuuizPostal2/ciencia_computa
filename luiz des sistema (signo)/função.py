@@ -25,12 +25,17 @@ def descobrir_signo (dia, mes):
       return "Peixes"
    else:
       return "Data inválida!"
-   
-dia = int(input("Digite o dia do seu nascimento:"))
-mes = int(input("Digite o mês do seu nascimento (1 a 12):")) 
+while True:  
+ dia = int(input("Digite o dia do seu nascimento:"))
+ mes = int(input("Digite o mês do seu nascimento (1 a 12):")) 
 
-signo = descobrir_signo(dia, mes)
-print(f"Seu signo é: {signo}")
+ signo = descobrir_signo(dia, mes)
+ print(f"Seu signo é: {signo}")
+
+ Continuar = input("você quer continuar? (sim/não):").strip().lower()
+ if Continuar == "Não" or Continuar == "não":
+        print("Até mais!")
+        break 
       
    
 
