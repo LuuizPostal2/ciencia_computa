@@ -27,7 +27,7 @@ QTD_VENDIDA INT NOT NULL,
 DATA_VENDA INT NOT NULL,
 
 PRIMARY KEY (ID_PEDIDO, ID_VENDEDOR)
-
+);
 
 CREATE TABLE VENDEDORES (
     ID_VENDEDOR INT NOT NULL,
@@ -36,3 +36,12 @@ PRIMARY KEY (ID_VENDEDOR)
 );
 
 SET FOREIGN_KEY_CHEKS = 0;
+
+INSERT INTO LIVROS VALUES
+(1, 'O Senhor dos Anéis', 'J.R.R. Tolkien', 'HarperCollins', 'Fantasia', 59.90),
+(2, '1984', 'George Orwell', 'Companhia das Letras', 'Ficção Científica', 39.90),
+(3, 'Dom Casmurro', 'Machado de Assis', 'Principis', 'Literatura Brasileira', 29.90),
+(4, 'A Revolução dos Bichos', 'George Orwell', 'Companhia das Letras', 'Sátira', 35.50),
+(5, 'O Hobbit', 'J.R.R. Tolkien', 'HarperCollins', 'Fantasia', 49.90); 
+
+SELECT * FROM LIVROS;
