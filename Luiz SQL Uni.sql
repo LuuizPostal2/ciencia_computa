@@ -45,3 +45,27 @@ INSERT INTO LIVROS VALUES
 (5, 'O Hobbit', 'J.R.R. Tolkien', 'HarperCollins', 'Fantasia', 49.90); 
 
 SELECT * FROM LIVROS;
+
+SELECT ID_LIVRO "NUMERO_LIVRO" FROM LIVROS;
+
+SELECT * FROM LIVROS WHERE CATEGORIA = "FANTASIA";
+
+INSERT INTO ESTOQUE VALUES(1, 15),
+(2, 20),
+(3, 12),
+(4, 18),
+(5, 10);
+
+INSERT INTO VENDEDORES VALUES
+(1, 'Amy'),
+(2, 'Joan'),
+(3, 'Eva'),
+(4, 'Julia'),
+(5, 'Gustavo');
+
+INSERT INTO VENDAS VALUES
+(101, 1, 1, 2, '2024-03-01'),
+(102, 2, 3, 1, '2024-03-02'),
+(103, 3, 5, 3, '2024-03-03'),
+(104, 4, 2, 1, '2024-03-04'),
+(105, 5, 7, 4, '2024-03-05');
