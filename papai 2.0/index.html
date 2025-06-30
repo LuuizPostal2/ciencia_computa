@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flappy Noel com Neve</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: url('./imagens/download.gif') no-repeat center center fixed;
+      background-size: cover;
+    }
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="400" height="700"></canvas>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const noelImg = new Image();
+    noelImg.src = "./imagens/noel.png";
+
+    const chimImg = new Image();
+    chimImg.src = "./imagens/chamine.png";
+
+    const bird = {
+      x: 50,
+      y: 150,
+      width: 50,
+      height: 50,
+      gravity: 0.6,
+      lift: -10,
+      velocity: 0,
+      maxVelocity: 8
+    };
+
+    const pipes = [];
+    const pipeWidth = 50;
+    const pipeGap = 140;
+    let score = 0;
+    let frame = 0;
+    let gameOver = false;
+
+    document.addEventListener("keydown", e => {
+      if (e.code === "Space") {
+        bird.velocity = bird.lift;
+      }
+    });
+
+    function drawBird() {
+      ctx.drawImage(noelImg, bird.x, bird.y, bird.width, bird.height);
+    }
+
+    function drawChamine(pipe) {
+      const topY = pipe.top;
+      const bottomY = pipe.top + pipeGap;
+
+      ctx.save();
+      ctx.translate(pipe.x + pipeWidth / 2, topY);
+      ctx.scale(1, -1);
+      ctx.drawImage(chimImg, -pipeWidth / 2, 0, pipeWidth, topY);
+      ctx.restore();
+
+      const alturaInferior = canvas.height - bottomY;
+      ctx.drawImage(chimImg, pipe.x, bottomY, pipeWidth, alturaInferior);
+    }
+
+    function drawScore() {
+      ctx.fillStyle = "white";
+      ctx.font = "24px Arial";
+      ctx.fillText("Pontos: " + score, 10, 30);
+    }
+
+    function update() {
+      bird.velocity += bird.gravity;
+
+      if (bird.velocity > bird.maxVelocity) bird.velocity = bird.maxVelocity;
+      if (bird.velocity < -bird.maxVelocity) bird.velocity = -bird.maxVelocity;
+
+      bird.y += bird.velocity;
+
+      if (bird.y + bird.height > canvas.height) {
+        bird.y = canvas.height - bird.height;
+        bird.velocity = 0;
+      }
+      if (bird.y < 0) {
+        bird.y = 0;
+        bird.velocity = 0;
+      }
+
+      if (frame % 100 === 0) {
+        const minGapTop = 100;
+        const maxGapTop = canvas.height - pipeGap - 100;
+        const top = Math.floor(Math.random() * (maxGapTop - minGapTop)) + minGapTop;
+        pipes.push({ x: canvas.width, top: top, counted: false });
+      }
+
+      for (let i = 0; i < pipes.length; i++) {
+        let pipe = pipes[i];
+        pipe.x -= 2;
+
+        if (pipe.x + pipeWidth < 0) continue;
+
+        const pipeHitbox = {
+          x: pipe.x + 5,
+          width: pipeWidth - 10,
+          topHeight: pipe.top - 5,
+          bottomY: pipe.top + pipeGap + 5,
+        };
+
+        const collidedHorizontally =
+          bird.x + bird.width > pipeHitbox.x &&
+          bird.x < pipeHitbox.x + pipeHitbox.width;
+
+        const collidedVertically =
+          bird.y < pipeHitbox.topHeight ||
+          bird.y + bird.height > pipeHitbox.bottomY;
+
+        if (collidedHorizontally && collidedVertically) {
+          resetGame();
+        }
+
+        if (!pipe.counted && pipe.x + pipeWidth < bird.x) {
+          score++;
+          pipe.counted = true;
+        }
+      }
+
+      while (pipes.length > 0 && pipes[0].x + pipeWidth < 0) {
+        pipes.shift();
+      }
+    }
+
+    function resetGame() {
+      if (gameOver) return;
+      gameOver = true;
+
+      setTimeout(() => {
+        alert("Game Over! Pontuação: " + score);
+        bird.y = 150;
+        bird.velocity = 0;
+        pipes.length = 0;
+        score = 0;
+        frame = 0;
+        gameOver = false;
+      }, 100);
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBird();
+      pipes.forEach(drawChamine);
+      drawScore();
+    }
+
+    function loop() {
+      update();
+      draw();
+      frame++;
+      requestAnimationFrame(loop);
+    }
+
+    let imagensCarregadas = 0;
+    function verificarInicio() {
+      imagensCarregadas++;
+      if (imagensCarregadas === 2) loop();
+    }
+
+    noelImg.onload = verificarInicio;
+    chimImg.onload = verificarInicio;
+  </script>
+</body>
+</html>
+
+   
