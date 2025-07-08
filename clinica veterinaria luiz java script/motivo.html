@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Motivo da Consulta & Agendamento</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e0f2e9;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      width: 320px;
+      text-align: center;
+    }
+    h2 {
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      font-size: 16px;
+    }
+    button:disabled {
+      background-color: #9ccc9c;
+      cursor: not-allowed;
+    }
+    .resultado {
+      margin-top: 25px;
+      font-size: 18px;
+      color: #333;
+      font-weight: 600;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Motivo da Consulta</h2>
+    <select id="motivoSelect">
+      <option value="" disabled selected>Selecione o motivo</option>
+      <option value="Vacinação">Vacinação</option>
+      <option value="Consulta de rotina">Consulta de rotina</option>
+      <option value="Cirurgia">Cirurgia</option>
+      <option value="Exame clínico">Exame clínico</option>
+      <option value="Emergência">Emergência</option>
+      <option value="Outros">Outros</option>
+    </select>
+
+    <input type="text" id="motivoPersonalizado" placeholder="Digite o motivo da consulta" style="display:none;">
+
+    <button id="btnAgendar" disabled>Agendar Consulta</button>
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    const motivoSelect = document.getElementById('motivoSelect');
+    const motivoPersonalizado = document.getElementById('motivoPersonalizado');
+    const btnAgendar = document.getElementById('btnAgendar');
+    const resultadoDiv = document.getElementById('resultado');
+
+    motivoSelect.addEventListener('change', () => {
+      resultadoDiv.textContent = "";
+      if (motivoSelect.value === "Outros") {
+        motivoPersonalizado.style.display = "block";
+        motivoPersonalizado.value = "";
+        motivoPersonalizado.focus();
+        btnAgendar.disabled = true;
+      } else {
+        motivoPersonalizado.style.display = "none";
+        btnAgendar.disabled = motivoSelect.value === "";
+      }
+    });
+
+    motivoPersonalizado.addEventListener('input', () => {
+      btnAgendar.disabled = motivoPersonalizado.value.trim() === "";
+    });
+
+    btnAgendar.addEventListener('click', () => {
+      let motivo = motivoSelect.value;
+      if (motivo === "Outros") {
+        motivo = motivoPersonalizado.value.trim();
+        if (!motivo) {
+          alert("Por favor, digite o motivo da consulta.");
+          return;
+        }
+      }
+      if (!motivo) return;
+
+      // Gera data e hora aleatória até 5 dias depois
+      const dataHora = gerarDataHoraAleatoria();
+
+      resultadoDiv.innerHTML = `
+        ✅ Consulta marcada com sucesso!\n
+        Motivo: <strong>${motivo}</strong>\n
+        Data e horário: <strong>${dataHora}</strong>
+      `;
+
+      // Desabilita inputs e botão após agendar
+      motivoSelect.disabled = true;
+      motivoPersonalizado.disabled = true;
+      btnAgendar.disabled = true;
+    });
+
+    function gerarDataHoraAleatoria() {
+      const hoje = new Date();
+      const diaAleatorio = new Date(hoje.getTime() + Math.floor(Math.random() * 6) * 24 * 60 * 60 * 1000);
+
+      // Horário entre 08:00 e 17:00
+      const hora = 8 + Math.floor(Math.random() * 10);
+      diaAleatorio.setHours(hora, 0, 0, 0);
+
+      return diaAleatorio.toLocaleString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      });
+    }
+  </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Motivo da Consulta & Agendamento</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e0f2e9;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      width: 320px;
+      text-align: center;
+    }
+    h2 {
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      font-size: 16px;
+    }
+    button:disabled {
+      background-color: #9ccc9c;
+      cursor: not-allowed;
+    }
+    .resultado {
+      margin-top: 25px;
+      font-size: 18px;
+      color: #333;
+      font-weight: 600;
+      white-space: pre-line;
+    }
+    .voltar {
+      margin-top: 20px;
+      background-color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Motivo da Consulta</h2>
+    <select id="motivoSelect">
+      <option value="" disabled selected>Selecione o motivo</option>
+      <option value="Vacinação">Vacinação</option>
+      <option value="Consulta de rotina">Consulta de rotina</option>
+      <option value="Cirurgia">Cirurgia</option>
+      <option value="Exame clínico">Exame clínico</option>
+      <option value="Emergência">Emergência</option>
+      <option value="Outros">Outros</option>
+    </select>
+
+    <input type="text" id="motivoPersonalizado" placeholder="Digite o motivo da consulta" style="display:none;">
+
+    <button id="btnAgendar" disabled>Agendar Consulta</button>
+    <div class="resultado" id="resultado"></div>
+
+    <button class="voltar" onclick="window.location.href='index.html'">Voltar para Página Principal</button>
+  </div>
+
+  <script>
+    const motivoSelect = document.getElementById('motivoSelect');
+    const motivoPersonalizado = document.getElementById('motivoPersonalizado');
+    const btnAgendar = document.getElementById('btnAgendar');
+    const resultadoDiv = document.getElementById('resultado');
+
+    motivoSelect.addEventListener('change', () => {
+      resultadoDiv.textContent = "";
+      if (motivoSelect.value === "Outros") {
+        motivoPersonalizado.style.display = "block";
+        motivoPersonalizado.value = "";
+        motivoPersonalizado.focus();
+        btnAgendar.disabled = true;
+      } else {
+        motivoPersonalizado.style.display = "none";
+        btnAgendar.disabled = motivoSelect.value === "";
+      }
+    });
+
+    motivoPersonalizado.addEventListener('input', () => {
+      btnAgendar.disabled = motivoPersonalizado.value.trim() === "";
+    });
+
+    btnAgendar.addEventListener('click', () => {
+      let motivo = motivoSelect.value;
+      if (motivo === "Outros") {
+        motivo = motivoPersonalizado.value.trim();
+        if (!motivo) {
+          alert("Por favor, digite o motivo da consulta.");
+          return;
+        }
+      }
+      if (!motivo) return;
+
+      // Gera data e hora aleatória até 5 dias depois
+      const dataHora = gerarDataHoraAleatoria();
+
+      resultadoDiv.innerHTML = `
+        ✅ Consulta marcada com sucesso!\n
+        Motivo: <strong>${motivo}</strong>\n
+        Data e horário: <strong>${dataHora}</strong>
+      `;
+
+      // Salva no localStorage para página principal acessar
+      localStorage.setItem('motivoConsultaAgendada', motivo);
+      localStorage.setItem('dataHoraConsultaAgendada', dataHora);
+
+      // Desabilita inputs e botão após agendar
+      motivoSelect.disabled = true;
+      motivoPersonalizado.disabled = true;
+      btnAgendar.disabled = true;
+    });
+
+    function gerarDataHoraAleatoria() {
+      const hoje = new Date();
+      const diaAleatorio = new Date(hoje.getTime() + Math.floor(Math.random() * 6) * 24 * 60 * 60 * 1000);
+
+      // Horário entre 08:00 e 17:00
+      const hora = 8 + Math.floor(Math.random() * 10);
+      diaAleatorio.setHours(hora, 0, 0, 0);
+
+      return diaAleatorio.toLocaleString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      });
+    }
+  </script>
+
+</body>
+</html>

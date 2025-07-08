@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clínica Veterinária - Cadastro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #d7f1f7, #f5fefd);
+      color: #333;
+    }
+    header {
+      background-color: #4CAF50;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      font-size: 28px;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 40px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+    h2, h3 {
+      margin-top: 0;
+      color: #4CAF50;
+      font-weight: 600;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #e0f2e9;
+    }
+    .footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    🐾 Clínica Veterinária - Sistema de Cadastro
+  </header>
+
+  <div class="container">
+
+    <!-- Cadastro de Animal -->
+    <div class="card">
+      <h2>🐶 Cadastro de Animal</h2>
+      <form id="formAnimal">
+        <label>Nome:</label>
+        <input type="text" id="nomeAnimal" required>
+        <label>Data de Nascimento:</label>
+        <input type="date" id="dataAnimal" required>
+        <label>Raça:</label>
+        <input type="text" id="racaAnimal" required>
+        <button type="submit">Cadastrar Animal</button>
+      </form>
+    </div>
+
+    <!-- Cadastro de Usuário -->
+    <div class="card">
+      <h2>👤 Cadastro de Usuário</h2>
+      <form id="formUsuario">
+        <label>Nome:</label>
+        <input type="text" id="nomeUsuario" required>
+        <label>Email:</label>
+        <input type="email" id="emailUsuario" required>
+        <label>Senha:</label>
+        <input type="password" id="senhaUsuario" required>
+        <label>Data de Nascimento:</label>
+        <input type="date" id="dataUsuario" required>
+        <label>ID do Animal:</label>
+        <input type="text" id="animalUsuario" required>
+        <button type="submit">Cadastrar Usuário</button>
+      </form>
+    </div>
+
+    <!-- Cadastro de Doutor -->
+    <div class="card">
+      <h2>🩺 Cadastro de Doutor</h2>
+      <form id="formDoutor">
+        <label>Nome:</label>
+        <input type="text" id="nomeDoutor" required>
+        <label>Email:</label>
+        <input type="email" id="emailDoutor" required>
+        <label>Senha:</label>
+        <input type="password" id="senhaDoutor" required>
+        <button type="submit">Cadastrar Doutor</button>
+      </form>
+    </div>
+
+    <!-- Cadastro de Consulta -->
+    <div class="card">
+      <h2>🏥 Cadastro de Consulta</h2>
+      <form id="formConsulta">
+        <label>ID Usuário:</label>
+        <input type="text" id="idUsuarioConsulta" required>
+        <label>ID Animal:</label>
+        <input type="text" id="idAnimalConsulta" required>
+        <label>ID Doutor:</label>
+        <input type="text" id="idDoutorConsulta" required>
+        <label>Descrição:</label>
+        <input type="text" id="descricaoConsulta" required>
+        <button type="submit">Cadastrar Consulta</button>
+      </form>
+    </div>
+
+    <!-- Botão para abrir página de motivo/horário -->
+    <div class="card">
+      <h2>📅 Agendar Motivo da Consulta</h2>
+      <button onclick="window.location.href='motivo-consulta.html'">Ir para Agendamento</button>
+    </div>
+
+    <!-- Tabelas -->
+    <div class="card">
+      <h2>📋 Registros</h2>
+
+      <h3>🐾 Animais</h3>
+      <table id="tabelaAnimais"></table>
+
+      <h3>👤 Usuários</h3>
+      <table id="tabelaUsuarios"></table>
+
+      <h3>🩺 Doutores</h3>
+      <table id="tabelaDoutores"></table>
+
+      <h3>🏥 Consultas</h3>
+      <table id="tabelaConsultas"></table>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Criado com ❤️ para clínicas veterinárias - 2025
+  </div>
+
+  <script>
+    // Exemplo simples para mostrar alerta ao carregar página com dados agendados no localStorage
+    window.addEventListener('load', () => {
+      const motivo = localStorage.getItem('motivoConsultaAgendada');
+      const dataHora = localStorage.getItem('dataHoraConsultaAgendada');
+
+      if (motivo && dataHora) {
+        alert(`Consulta agendada!\nMotivo: ${motivo}\nData e horário: ${dataHora}`);
+
+        // Se quiser apagar após mostrar, descomente a linha abaixo:
+        // localStorage.removeItem('motivoConsultaAgendada');
+        // localStorage.removeItem('dataHoraConsultaAgendada');
+      }
+    });
+  </script>
+</body>
+</html>
+
