@@ -15,186 +15,79 @@
       <a href="#">Treinadores</a>
       <a href="#">Contato</a>
     </nav>
+    <button id="theme-toggle" class="small-btn">🌙</button>
   </header>
 
   <section class="hero">
     <h1>Bem-vindo ao Mundo Pokémon!</h1>
   </section>
 
-  <!-- POKÉDEX -->
   <section id="pokedex" class="pokedex">
     <h2>Pokédex</h2>
-
     <div class="search-row">
       <input id="search" type="text" placeholder="Digite o nome ou número do Pokémon e pressione Enter...">
       <button id="clear-search" class="small-btn" title="Limpar busca">✕</button>
     </div>
 
-    <div id="pokemon-container" class="cards">
-      <!-- cards vão aqui -->
+    <div class="filters">
+      <label>Filtrar por tipo:</label>
+      <select id="type-filter">
+        <option value="">Todos</option>
+        <option value="normal">Normal</option>
+        <option value="fire">Fire</option>
+        <option value="water">Water</option>
+        <option value="electric">Electric</option>
+        <option value="grass">Grass</option>
+        <option value="ice">Ice</option>
+        <option value="fighting">Fighting</option>
+        <option value="poison">Poison</option>
+        <option value="ground">Ground</option>
+        <option value="flying">Flying</option>
+        <option value="psychic">Psychic</option>
+        <option value="bug">Bug</option>
+        <option value="rock">Rock</option>
+        <option value="ghost">Ghost</option>
+        <option value="dragon">Dragon</option>
+        <option value="dark">Dark</option>
+        <option value="steel">Steel</option>
+        <option value="fairy">Fairy</option>
+      </select>
+
+      <label>Ordenar por:</label>
+      <select id="sort-order">
+        <option value="id-asc">ID Crescente</option>
+        <option value="id-desc">ID Decrescente</option>
+        <option value="name-asc">Nome A-Z</option>
+        <option value="name-desc">Nome Z-A</option>
+      </select>
     </div>
 
+    <div id="pokemon-container" class="cards"></div>
     <div class="pokedex-controls">
       <button id="load-more" class="load-more">Carregar Mais</button>
     </div>
   </section>
 
+  <!-- Overlay Pokémon -->
+  <div id="pokemon-overlay" class="pokemon-overlay" style="display:none;">
+    <div class="overlay-content">
+      <button class="close-btn" id="close-overlay">✕</button>
+      <div class="overlay-left">
+        <img id="overlay-img" src="" alt="Pokémon">
+      </div>
+      <div class="overlay-right">
+        <h2 id="overlay-name">Nome</h2>
+        <p id="overlay-type">Tipo: </p>
+        <p id="overlay-rarity">Raridade: </p>
+        <p class="desc" id="overlay-desc">Descrição curta do Pokémon...</p>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <p>© 2025 Pokédex World | Feito com ❤️ por Fãs de Pokémon</p>
   </footer>
 
-  <!-- SCRIPT DA POKÉDEX (colocado no final do body) -->
-  <script>
-    (function () {
-      'use strict';
-
-      const container = document.getElementById('pokemon-container');
-      const searchInput = document.getElementById('search');
-      const loadMoreBtn = document.getElementById('load-more');
-      const clearBtn = document.getElementById('clear-search');
-
-      if (!container || !searchInput || !loadMoreBtn) {
-        console.error('Elementos essenciais não encontrados no DOM.');
-        return;
-      }
-
-      // Cores por tipo
-      const typeColors = {
-        normal: "#A8A77A", fire: "#EE8130", water: "#6390F0",
-        electric: "#F7D02C", grass: "#7AC74C", ice: "#96D9D6",
-        fighting: "#C22E28", poison: "#A33EA1", ground: "#E2BF65",
-        flying: "#A98FF3", psychic: "#F95587", bug: "#A6B91A",
-        rock: "#B6A136", ghost: "#735797", dragon: "#6F35FC",
-        dark: "#705746", steel: "#B7B7CE", fairy: "#D685AD"
-      };
-
-      // Placeholder (data URI simples, evita 404)
-      const placeholder = 'data:image/svg+xml;utf8,' +
-        encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="100%" height="100%" fill="#eee"/></svg>');
-
-      // Controle de carregamento
-      let offset = 1;
-      const limit = 9;
-
-      // Busca um pokemon por nome ou id
-      async function fetchPokemon(nameOrId) {
-        try {
-          const res = await fetch('https://pokeapi.co/api/v2/pokemon/' + encodeURIComponent(nameOrId));
-          if (!res.ok) return null;
-          const data = await res.json();
-          return data;
-        } catch (err) {
-          console.error('Erro na fetch:', err);
-          return null;
-        }
-      }
-
-      // decide cor do texto com base na cor de fundo
-      function textColorForBg(hex) {
-        if (!hex || hex[0] !== '#') return '#222';
-        hex = hex.replace('#', '');
-        if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
-        const r = parseInt(hex.substring(0,2),16);
-        const g = parseInt(hex.substring(2,4),16);
-        const b = parseInt(hex.substring(4,6),16);
-        const luminance = (0.299*r + 0.587*g + 0.114*b);
-        return luminance > 180 ? '#222' : '#fff';
-      }
-
-      // Cria card DOM seguro
-      function createCard(pokemon) {
-        if (!pokemon) return;
-        const card = document.createElement('div');
-        card.className = 'card';
-
-        const primaryType = pokemon.types && pokemon.types.length > 0 ? pokemon.types[0].type.name : null;
-        const bg = typeColors[primaryType] || '#ffffff';
-        card.style.background = bg;
-        card.style.color = textColorForBg(bg);
-
-        const image = pokemon.sprites?.other?.['official-artwork']?.front_default
-                    ?? pokemon.sprites?.front_default
-                    ?? placeholder;
-
-        const nameCapitalized = pokemon.name ? pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) : '—';
-        const typesText = pokemon.types ? pokemon.types.map(t => t.type.name).join(', ') : '—';
-
-        card.innerHTML = `
-          <div class="card-top">
-            <img src="${image}" alt="${nameCapitalized}" loading="lazy">
-          </div>
-          <div class="card-body">
-            <h3>${nameCapitalized}</h3>
-            <p class="types">Tipo: ${typesText}</p>
-            <p class="poke-id">#${String(pokemon.id).padStart(3, '0')}</p>
-          </div>
-        `;
-
-        container.appendChild(card);
-      }
-
-      // Carrega um lote de pokémon (limit) a partir de offset
-      async function loadPokemons() {
-        loadMoreBtn.disabled = true;
-        loadMoreBtn.textContent = 'Carregando...';
-
-        // pequena proteção caso o container tenha sido removido
-        if (!container) return;
-
-        for (let i = offset; i < offset + limit; i++) {
-          const pokemon = await fetchPokemon(i);
-          if (pokemon) createCard(pokemon);
-        }
-        offset += limit;
-
-        loadMoreBtn.disabled = false;
-        loadMoreBtn.textContent = 'Carregar Mais';
-      }
-
-      // Busca por nome ou id quando o usuário aperta Enter
-      searchInput.addEventListener('keydown', async (e) => {
-        if (e.key !== 'Enter') return;
-        e.preventDefault();
-        const q = searchInput.value.trim().toLowerCase();
-        if (!q) {
-          // se vazio volta ao estado inicial
-          container.innerHTML = '';
-          offset = 1;
-          loadPokemons();
-          loadMoreBtn.style.display = 'inline-block';
-          return;
-        }
-
-        container.innerHTML = '<p class="msg">Buscando...</p>';
-        loadMoreBtn.style.display = 'none'; // esconder botão ao mostrar resultado único
-        const pokemon = await fetchPokemon(q);
-        container.innerHTML = '';
-        if (pokemon) {
-          createCard(pokemon);
-        } else {
-          container.innerHTML = '<p class="msg">Pokémon não encontrado!</p>';
-          // mostra o botão para permitir continuar explorando
-          loadMoreBtn.style.display = 'inline-block';
-        }
-      });
-
-      // Botão limpar busca
-      clearBtn.addEventListener('click', () => {
-        searchInput.value = '';
-        container.innerHTML = '';
-        offset = 1;
-        loadMoreBtn.style.display = 'inline-block';
-        loadPokemons();
-      });
-
-      // Evento do botão Carregar Mais
-      loadMoreBtn.addEventListener('click', loadPokemons);
-
-      // inicializa
-      container.innerHTML = '';
-      loadPokemons();
-
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
