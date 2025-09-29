@@ -63,24 +63,56 @@
     </div>
 
     <div id="pokemon-container" class="cards"></div>
+
     <div class="pokedex-controls">
       <button id="load-more" class="load-more">Carregar Mais</button>
+      <button id="add-pokemon" class="small-btn">Adicionar Pokémon</button>
     </div>
   </section>
 
   <!-- Overlay Pokémon -->
-  <div id="pokemon-overlay" class="pokemon-overlay" style="display:none;">
+  <div id="pokemon-overlay" class="pokemon-overlay" style="display:none;"></div>
+
+  <!-- Modal Adicionar Pokémon -->
+  <div id="add-pokemon-modal" class="pokemon-overlay" style="display:none;">
     <div class="overlay-content">
-      <button class="close-btn" id="close-overlay">✕</button>
-      <div class="overlay-left">
-        <img id="overlay-img" src="" alt="Pokémon">
-      </div>
-      <div class="overlay-right">
-        <h2 id="overlay-name">Nome</h2>
-        <p id="overlay-type">Tipo: </p>
-        <p id="overlay-rarity">Raridade: </p>
-        <p class="desc" id="overlay-desc">Descrição curta do Pokémon...</p>
-      </div>
+      <button class="close-btn" id="close-add-modal">✕</button>
+      <h2>Adicionar Pokémon</h2>
+      <form id="add-pokemon-form">
+        <label>Nome:</label>
+        <input type="text" id="new-name" required>
+
+        <label>Tipo:</label>
+        <select id="new-type" required>
+          <option value="normal">Normal</option>
+          <option value="fire">Fire</option>
+          <option value="water">Water</option>
+          <option value="electric">Electric</option>
+          <option value="grass">Grass</option>
+          <option value="ice">Ice</option>
+          <option value="fighting">Fighting</option>
+          <option value="poison">Poison</option>
+          <option value="ground">Ground</option>
+          <option value="flying">Flying</option>
+          <option value="psychic">Psychic</option>
+          <option value="bug">Bug</option>
+          <option value="rock">Rock</option>
+          <option value="ghost">Ghost</option>
+          <option value="dragon">Dragon</option>
+          <option value="dark">Dark</option>
+          <option value="steel">Steel</option>
+          <option value="fairy">Fairy</option>
+        </select>
+
+        <label>Raridade:</label>
+        <select id="new-rarity" required>
+          <option value="common">Comum</option>
+          <option value="mythical">Mítico</option>
+          <option value="legendary">Lendário</option>
+        </select>
+
+        <button type="submit" class="small-btn">Criar Pokémon</button>
+      </form>
     </div>
   </div>
 
