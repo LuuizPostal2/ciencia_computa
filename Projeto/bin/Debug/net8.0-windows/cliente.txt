@@ -1,0 +1,3 @@
+nome:Digite o ID.....; CPF:Digite o Nome.....; Senha:Digite a Entrada.....; Endereço:Digite a Categoria.....;Email:Digite o Preço.....;
+nome:Digite o ID.....; CPF:Digite o Nome.....; Senha:Digite a Entrada.....; Endereço:Digite a Categoria.....;Email:Digite o Preço.....;
+nome:Digite o ID.....; CPF:Digite o Nome.....; Senha:Digite a Entrada.....; Endereço:Digite a Categoria.....;Email:Digite o Preço.....;

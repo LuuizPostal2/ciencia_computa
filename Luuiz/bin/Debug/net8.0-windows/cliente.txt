@@ -1,0 +1,9 @@
+
+nome:LUIZ; CPF:456-479-395-90; Senha:luiz nice; Endereço:Rua das Flores;Email:luiz@gmail.com;
+nome:; CPF:; Senha:; Endereço:;Email:;
+nome:; CPF:; Senha:; Endereço:;Email:;
+nome:; CPF:; Senha:; Endereço:;Email:;
+nome:; CPF:; Senha:; Endereço:;Email:;
+nome:Digite o ID.....; CPF:Digite o Nome.....; Senha:Digite a Entrada.....; Endereço:Digite a Categoria.....;Email:Digite o Preço.....;
+nome:Luiz; CPF:4648743835-28; Senha:asetseysry; Endereço:Rua Wilmar Ribeiro;Email:lafjflgog2gmail;
+nome:dfdhd; CPF:cfhfgdjh; Senha:ghjfuj; Endereço:fghfhf;Email:fhgfhfhf;
